@@ -1,0 +1,1 @@
+role,model,resolved_model,item_id,abbreviation,expected,output,parsed,correct,status,latency_ms,input_tokens,output_tokens,thinking_tokens,cached_tokens,api_cost_usd,eval_count,eval_duration_ns,timestamp_utc,error

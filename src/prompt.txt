@@ -1,0 +1,11 @@
+Expand the medical abbreviation in the supplied UK medical-record context.
+Choose exactly one expansion from the fixed word list below and copy its spelling and case exactly.
+Return that expansion alone on one line: no quotes, JSON, explanation or final full stop.
+The word list is an output vocabulary; it does not give the abbreviation-to-answer mappings.
+
+Fixed word list:
+{word_list}
+
+Context: {context}
+Question: What does {abbreviation} mean here?
+Answer:
