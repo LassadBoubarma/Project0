@@ -1,1 +1,2 @@
 reportlab==4.4.3
+python-dotenv==1.1.1

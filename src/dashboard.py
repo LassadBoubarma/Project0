@@ -126,8 +126,8 @@ def dashboard_data(identifier=''):
             'complete': bool(meta.get('complete')), 'scope': meta.get('scope', 'three_models'),
             'comparable': bool(comparable), 'winners': winners, 'models': summaries, 'rows': rows,
             'items': items, 'expected_total': count*len(cfg['models']), 'job': job,
-            'api_key_ready': bool(os.environ.get('GEMINI_API_KEY')), 'reviews_ready': reviewed,
-            'csrf': TOKEN}
+            'api_key_ready': all(run.api_key_for(m) for m in cfg['models'] if m['provider'] != 'ollama'), 'reviews_ready': reviewed,
+            'cost_ready': run.local_cost_ready(cfg), 'csrf': TOKEN}
 
 
 def local_practice():
@@ -185,8 +185,9 @@ def local_practice():
 def start_job(mode):
     if mode not in ('local', 'test'): raise ValueError('Unknown run type.')
     if mode == 'test':
-        if not os.environ.get('GEMINI_API_KEY'): raise ValueError('Set GEMINI_API_KEY in the terminal and restart the dashboard first.')
+        if not all(run.api_key_for(m) for m in run.read_json(ROOT/'config.json')['models'] if m['provider'] != 'ollama'): raise ValueError('Put the teacher API key in .env as described in START_HERE.md, then restart the dashboard.')
         if not run.reviews_ready(run.load_data('test')[0]): raise ValueError('Complete both human label reviews before running the final test.')
+        if not run.local_cost_ready(run.read_json(ROOT/'config.json')): raise ValueError('Fill the three local_cost assumptions in config.json before the final test; see START_HERE.md.')
     with JOB_LOCK:
         if JOB['running']: raise ValueError('A run is already in progress. Wait for it to finish.')
         JOB.update(running=True, mode=mode, exit_code=None, log=[])
@@ -197,8 +198,9 @@ def start_job(mode):
                                   text=True, encoding='utf-8', errors='replace') as process:
                 for line in process.stdout:
                     # Prevent accidentally exposing a key if an underlying error ever includes it.
-                    key = os.environ.get('GEMINI_API_KEY', '')
-                    if key: line = line.replace(key, '[redacted]')
+                    keys = [run.api_key_for(m) for m in run.read_json(ROOT/'config.json')['models'] if m['provider'] != 'ollama']
+                    for key in filter(None, keys):
+                        line = line.replace(key, '[redacted]')
                     with JOB_LOCK: JOB['log'] = (JOB['log']+[line.rstrip()])[-30:]
                 code = process.wait()
         except OSError as exc:

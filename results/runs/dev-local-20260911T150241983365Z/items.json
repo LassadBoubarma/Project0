@@ -1,0 +1,72 @@
+[
+  {
+    "id": "dev_001",
+    "abbreviation": "BP",
+    "context": "The nurse recorded BP before the consultation.",
+    "expected": "blood pressure",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "dev_002",
+    "abbreviation": "AF",
+    "context": "The cardiologist documented AF as the rhythm diagnosis.",
+    "expected": "atrial fibrillation",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "dev_003",
+    "abbreviation": "BMI",
+    "context": "The weight-management clinic calculated BMI.",
+    "expected": "body mass index",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "dev_004",
+    "abbreviation": "CSF",
+    "context": "The laboratory received CSF after a lumbar puncture.",
+    "expected": "cerebrospinal fluid",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "dev_005",
+    "abbreviation": "CVP",
+    "context": "The intensive care team monitored CVP through a central line.",
+    "expected": "central venous pressure",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "dev_006",
+    "abbreviation": "CXR",
+    "context": "The clinician requested a CXR to assess the lungs.",
+    "expected": "chest X-ray",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "dev_007",
+    "abbreviation": "DVT",
+    "context": "Ultrasound confirmed DVT in the patient's leg.",
+    "expected": "deep vein thrombosis",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "dev_008",
+    "abbreviation": "ECG",
+    "context": "An ECG was recorded using electrodes on the skin.",
+    "expected": "electrocardiogram",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "dev_009",
+    "abbreviation": "EEG",
+    "context": "Neurology requested an EEG to record brain activity.",
+    "expected": "electroencephalogram",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "dev_010",
+    "abbreviation": "MRI",
+    "context": "Radiology scheduled an MRI using its magnetic scanner.",
+    "expected": "magnetic resonance imaging",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  }
+]

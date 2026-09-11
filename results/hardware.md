@@ -1,18 +1,11 @@
-# Local hardware — complete on the PC running Ollama
+# Local hardware - pending final run
 
-Status: pending. This file must describe your actual machine, not the machine that generated the project files.
+The final runner will overwrite this file with hardware/model information captured from the computer running Ollama, plus the cost assumptions from `config.json`.
 
-- CPU:
-- GPU and VRAM (or state CPU-only):
-- RAM:
-- Operating system:
-- Ollama version (`ollama --version`):
-- Exact model, parameter count, quantisation (`ollama show qwen2.5:1.5b`):
-- Model digest (automatically recorded in the run metadata):
-- Hardware/electricity cost in USD/hour and calculation/source:
-- Operator setup/maintenance hours allocated per month and hourly value:
-- Available serving hours/month (config default 160; justify/change before run):
-- Other workloads/power mode during measurement:
-- Any model loading, thermal throttling or memory problems:
+Before the final test, fill these real values in `config.json` under `local_cost`:
 
-For an owned machine, one possible hardware model is purchase price / expected useful operating hours + measured kW × electricity tariff. Those inputs must come from your situation. Do not use an invented GPU rental price. Local tokens/s and request throughput are generated from actual response timings. Cold first-call loading is included in latency; downloaded model weights are fetched before the run.
+- `hardware_usd_per_hour`
+- `labour_hours_per_month`
+- `labour_usd_per_hour`
+
+Do not invent a cloud/GPU rental price if you are using your own PC. A reasonable owned-PC method is depreciation per operating hour plus electricity cost per hour, with operator time entered separately.

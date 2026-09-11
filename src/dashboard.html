@@ -29,7 +29,7 @@
 <details id="logpanel" class="logpanel" hidden><summary>Run progress and messages</summary><pre id="log"></pre></details>
 <footer>Practice runs are separate from the final test. Most accurate does not necessarily mean best value: compare latency and cost too.</footer>
 </main>
-<dialog id="confirm"><h2>Run the final comparison?</h2><p>This runs every test question on all three configured models. API calls may use paid credit. The existing two-person label review check still applies.</p><div class="actions"><button class="btn" id="cancel">Cancel</button><button class="btn primary" id="confirmRun">Start test</button></div></dialog>
+<dialog id="confirm"><h2>Run the final comparison?</h2><p>This runs every test question on all three configured models. API calls may use paid credit. The two-person label review and local-cost checks still apply.</p><div class="actions"><button class="btn" id="cancel">Cancel</button><button class="btn primary" id="confirmRun">Start test</button></div></dialog>
 <script>
 'use strict';
 const $=id=>document.getElementById(id);let state=null,busy=false,startPending=false;
@@ -42,8 +42,8 @@ function options(select,entries){const signature=JSON.stringify(entries);if(sele
 function render(data){
  state=data;options($('runs'),[['','Latest experiment'],...data.runs.map(r=>[r.id,(r.scope==='local_practice'?'Local practice':r.split==='dev'?'Three-model practice':'Final test')+' · '+r.started+(r.complete?'':' · unfinished')])]);
  const active=data.job.running;
- $('local').disabled=active||startPending;$('test').disabled=active||startPending||!data.api_key_ready||!data.reviews_ready;
- $('setup').textContent=(!data.api_key_ready?'API key not set. Local practice is available. ':'API key is set. ')+(!data.reviews_ready?'Final test requires two completed label reviews per item.':'Label reviews are complete.');
+ $('local').disabled=active||startPending;$('test').disabled=active||startPending||!data.api_key_ready||!data.reviews_ready||!data.cost_ready;
+ $('setup').textContent=(!data.api_key_ready?'API key not set. Local practice is available. ':'API key is set. ')+(!data.reviews_ready?'Final test requires two completed label reviews per item. ':'Label reviews are complete. ')+(!data.cost_ready?'Fill local cost assumptions in config.json before the final test.':'Local cost assumptions are set.');
  $('status').textContent=!data.selected?'Not run yet':data.complete?'Complete':active&&data.selected===data.runs[0]?.id?'Running':'Unfinished';
  $('notice').textContent=!data.selected?'No benchmark results yet. Run local practice to check Qwen without an API key.':data.split==='dev'?(data.scope==='local_practice'?'Local practice: Qwen only, on development questions. These scores are not part of the final three-model comparison.':'Development run: practice results are excluded from the final test.') :data.comparable?'Completed test on the same questions. Every failed request is counted as incorrect.':'Final test is incomplete. Accuracy is provisional; no winner is declared.';
  const cards=$('cards');cards.replaceChildren();

@@ -1,0 +1,81 @@
+{
+  "started_utc": "20260911T153126938639Z",
+  "split": "dev",
+  "scope": "local_practice",
+  "settings": {
+    "temperature": 0,
+    "max_output_tokens": 64,
+    "timeout_seconds": 180,
+    "pause_seconds": 1,
+    "pricing_checked": "2026-09-11",
+    "pricing_source": "https://ai.google.dev/gemini-api/docs/pricing",
+    "models": [
+      {
+        "role": "local",
+        "provider": "ollama",
+        "model": "qwen2.5:1.5b"
+      }
+    ],
+    "local_cost": {
+      "hardware_usd_per_hour": 0.15,
+      "labour_hours_per_month": 1,
+      "labour_usd_per_hour": 5,
+      "requests_per_month": 1000,
+      "available_hours_per_month": 160
+    },
+    "notes": "Current API candidates and paid standard list prices checked 2026-09-11. Confirm the teacher approves/provides access to these exact models before the frozen run. Temperature 0 is retained because the assignment requires it. No tools, retries, retrieval, explicit cache or chat history."
+  },
+  "complete": true,
+  "item_ids": [
+    "dev_001",
+    "dev_002",
+    "dev_003",
+    "dev_004",
+    "dev_005",
+    "dev_006",
+    "dev_007",
+    "dev_008",
+    "dev_009",
+    "dev_010"
+  ],
+  "sha256": {
+    "config.json": "f636fbb80c2e08e5757ccfb4dc923bb02be40abfc34e5ecdbd5fabfa9c8fd194",
+    "data/items.jsonl": "9dbfbb46016d10bad3a55baac552378e7fe72a5f63c3b986d45757d208d41efb",
+    "data/dev.jsonl": "a79bfe4f9e56b129edf36289c7b4b9655ef6a54af3e0119ffa7892abbaec84db",
+    "data/word_list.json": "f381040ef2c8541f19ba04f6291f58b0d0331e7c869f22b231bea1f3ca94ef2d",
+    "data/label_reviews.csv": "2d1519c40973548ec9c9e7961103642e1e58db0ad2bc47c5f3f9409657326212",
+    "src/prompt.txt": "b41527c22008db64792aad0f367d71c1b95256ec081520a769c6c57e9101c9d0",
+    "src/run.py": "bebfeba188df27bbdc71c9ee8276ca490d81a20f0202c5c49dd8dc71b990f17c",
+    "src/score.py": "1b39288882b9a46e206cc0606b1f38490850097f2d9e52e201d16d6b597da530",
+    "src/cost.py": "37c6d3a4222466c0f84378e14ea25c5a6b677ebe0cf692520f5bb8ddb2c9844d"
+  },
+  "hardware": {
+    "model": {
+      "name": "qwen2.5:1.5b",
+      "model": "qwen2.5:1.5b",
+      "modified_at": "2026-09-11T14:10:30.4290854+01:00",
+      "size": 986061892,
+      "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "1.5B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 1536
+      },
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    },
+    "os": "Windows-11-10.0.26200-SP0",
+    "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD"
+  },
+  "latency_policy": "Full request wall time; includes first cold load, excludes pacing.",
+  "retries": 0
+}
