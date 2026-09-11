@@ -55,7 +55,11 @@ class DashboardTests(unittest.TestCase):
         local=data['models'][2]
         self.assertEqual(local['correct'],49)
         self.assertEqual(local['accuracy'],.98)
-        self.assertIsNone(local['cost'])
+        if run.local_cost_ready(self.cfg):
+            self.assertIsNotNone(local['cost'])
+            self.assertGreaterEqual(local['cost'], 0)
+        else:
+            self.assertIsNone(local['cost'])
         self.assertAlmostEqual(data['models'][0]['cost'],1.0)
     def test_incomplete_and_dev_never_declare_winner(self):
         path=self.fixture(complete=False)
