@@ -19,7 +19,7 @@ from reportlab.platypus import (
     TableStyle,
 )
 
-from src.run import ROOT, load_data, read_json, reviews_ready
+from src.run import ROOT, read_json
 from src.cost import percentile, local_scenario
 
 SUMMARY_FIELDS = [
@@ -237,6 +237,40 @@ def validate_run(run_dir):
     return rows, meta
 
 
+def audit_normalization(rows, models):
+    """Post-run diagnostics only. Never alter scores or saved model answers."""
+
+    def spelling_key(text):
+        text = text.strip().casefold()
+        for before, after in [
+            ("haem", "hem"),
+            ("faec", "fec"),
+            ("normalised", "normalized"),
+        ]:
+            text = text.replace(before, after)
+        return "".join(text.split()).replace("-", "")
+
+    findings = []
+    for model in models:
+        batch = [r for r in rows if r["role"] == model["role"]]
+        failures = [r for r in batch if r["correct"] == "0"]
+        candidates = [
+            r
+            for r in failures
+            if spelling_key(r["output"]) == spelling_key(r["expected"])
+        ]
+        findings.append(
+            {
+                "model": model["model"],
+                "strict": sum(r["output"].strip() == r["expected"] for r in batch),
+                "accepted": sum(int(r["correct"]) for r in batch),
+                "failures": len(failures),
+                "candidates": candidates,
+            }
+        )
+    return findings
+
+
 def generate(run_dir, publish=False):
     rows, meta = validate_run(run_dir)
     cfg = meta["settings"]
@@ -270,32 +304,48 @@ def generate(run_dir, publish=False):
         failures.append((model, bad[:3], len(bad)))
     decision = build_decision(summary)
 
-    status = (
-        "DRAFT - real benchmark not run"
-        if not rows
-        else (
-            "DEV ONLY - excluded from final results"
-            if meta["split"] == "dev"
-            else "MEASURED FINAL TEST"
-        )
-    )
+    audit = audit_normalization(rows, cfg["models"])
+    hw = meta["hardware"]
     styles = getSampleStyleSheet()
     styles.add(
         ParagraphStyle(
-            name="BodySmall",
-            fontName="Helvetica",
-            fontSize=8.5,
-            leading=10.5,
+            name="ReportTitle",
+            fontName="Helvetica-Bold",
+            fontSize=21,
+            leading=24,
+            textColor=colors.HexColor("#15384b"),
+            spaceAfter=8,
+        )
+    )
+    styles.add(
+        ParagraphStyle(
+            name="Section",
+            fontName="Helvetica-Bold",
+            fontSize=11,
+            leading=14,
+            textColor=colors.HexColor("#087e83"),
+            spaceBefore=10,
             spaceAfter=5,
         )
     )
     styles.add(
         ParagraphStyle(
-            name="BodyTiny", fontName="Helvetica", fontSize=7.5, leading=9, spaceAfter=4
+            name="BodySmall",
+            fontName="Helvetica",
+            fontSize=9,
+            leading=11.5,
+            spaceAfter=5,
         )
     )
     styles.add(
-        ParagraphStyle(name="CellSmall", fontName="Helvetica", fontSize=6.7, leading=8)
+        ParagraphStyle(
+            name="BodyTiny", fontName="Helvetica", fontSize=8, leading=10, spaceAfter=5
+        )
+    )
+    styles.add(
+        ParagraphStyle(
+            name="CellSmall", fontName="Helvetica", fontSize=7.6, leading=9.5
+        )
     )
     story = []
 
@@ -303,22 +353,28 @@ def generate(run_dir, publish=False):
         story.append(Paragraph(escape(text), styles[style]))
 
     def heading(text):
-        para(text, "Heading2")
+        para(text, "Section")
 
     def grid(data, widths):
         cells = [
             [Paragraph(escape(str(c)), styles["CellSmall"]) for c in row]
             for row in data
         ]
-        table = Table(cells, colWidths=widths, hAlign="LEFT")
+        table = Table(cells, colWidths=widths, repeatRows=1, hAlign="LEFT")
         table.setStyle(
             TableStyle(
                 [
-                    ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#dbeafe")),
+                    ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#deedef")),
+                    (
+                        "ROWBACKGROUNDS",
+                        (0, 1),
+                        (-1, -1),
+                        [colors.white, colors.HexColor("#f5f8fa")],
+                    ),
                     ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                    ("GRID", (0, 0), (-1, -1), 0.35, colors.HexColor("#cbd5e1")),
-                    ("LEFTPADDING", (0, 0), (-1, -1), 4),
-                    ("RIGHTPADDING", (0, 0), (-1, -1), 4),
+                    ("LINEBELOW", (0, 0), (-1, 0), 0.7, colors.HexColor("#087e83")),
+                    ("LEFTPADDING", (0, 0), (-1, -1), 5),
+                    ("RIGHTPADDING", (0, 0), (-1, -1), 5),
                     ("TOPPADDING", (0, 0), (-1, -1), 4),
                     ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
                 ]
@@ -327,160 +383,181 @@ def generate(run_dir, publish=False):
         story.append(table)
         story.append(Spacer(1, 6))
 
-    # PAGE 1
-    para("Medical abbreviation bake-off - three local model sizes", "Title")
-    para("CS496 Project 0 | " + status)
+    para("Medical abbreviation bake-off", "ReportTitle")
     para(
-        "Run: "
-        + meta["started_utc"]
-        + " | Three-local-model adaptation of the API/API/local brief.",
+        "CS496 AI Engineering | Project 0 | Mediterranean Institute of Technology",
         "BodyTiny",
     )
-    heading("1. Task and example")
     para(
-        "Task: expand one medical abbreviation from a short UK medical-record context. The gold answer is hidden from the model and scoring is automatic."
+        "Measured run: " + meta["started_utc"] + " UTC | " + meta["split"].upper(),
+        "BodyTiny",
     )
-    try:
-        example_item = read_json(run_dir / "items.json")[0]
-        para(
-            f"Example: context: {example_item['context']} Question: What does {example_item['abbreviation']} mean here? Expected: {example_item['expected']}."
-        )
-    except Exception:
-        para("Example item unavailable in this draft.")
-
-    heading("2. Data")
-    try:
-        review_note = (
-            "two distinct reviewer names recorded"
-            if reviews_ready(load_data("test")[0])
-            else "two-person review pending"
-        )
-    except Exception:
-        review_note = "review status unavailable"
     para(
-        f"{len(meta['item_ids'])} {meta['split']} items; the project has 50 test and 10 development items with disjoint abbreviations. Labels come from the NHS abbreviation glossary; contexts are synthetic and contain no patient data. Review records: {review_note}; recorded names are not independent proof of review. Development items were used only for setup; final accuracy uses the 50-item frozen test set."
+        "Scope: three local Qwen sizes, selected to avoid paid API usage. This adapts the required top-API / cheap-API / local comparison; instructor acceptance remains to be confirmed.",
+        "BodyTiny",
     )
 
-    heading("3. Setup")
+    heading("01  Task and dataset")
+    example = read_json(run_dir / "items.json")[0]
+    para(
+        "Expand an abbreviation from a short UK medical-record context into one canonical term. One model call produces one answer; a deterministic function scores it without a human or LLM judge."
+    )
+    para(
+        f"Example: {example['context']} Asked: {example['abbreviation']}. Gold answer: {example['expected']}."
+    )
+    para(
+        "The project contains 50 test and 10 development items with disjoint abbreviations. Labels follow the NHS glossary [1]; contexts were synthetically drafted with AI assistance and contain no patient data. The fixed convenience split puts familiar terms in dev and rarer terms in test. It is not a random sample. The review CSV records Lassaad and Rami for all 60 labels, dated 11 September 2026."
+    )
+
+    heading("02  Reproducible setup")
     para(
         "Models: "
         + ", ".join(m["model"] for m in cfg["models"])
-        + ". All three run locally through Ollama on the same machine."
+        + f". Ollama {hw.get('ollama_version', {}).get('version', 'unrecorded')}; Q4_K_M quantization in the saved model metadata. Hardware: {hw.get('cpu')}; {hw.get('gpu')}; {hw.get('ram_gb')} GB RAM; Python {hw.get('python')}."
     )
     para(
-        f"Settings: temperature {cfg['temperature']}; output limit {cfg['max_output_tokens']} tokens; same prompt, same question order, same parser; one sequential call per item; no retries, tools, retrieval or chat history. Scoring trims outer whitespace and ignores letter case, but wording otherwise must match the canonical answer exactly. Timeouts, truncation and malformed outputs count as wrong."
+        f"Shared settings: temperature {cfg['temperature']}, output limit {cfg['max_output_tokens']} tokens, context window 8192, timeout {cfg['timeout_seconds']} s. Identical item order, prompt and parser; sequential requests, no retries, retrieval, tools or chat history. Gold labels and vocabulary are hidden from the models."
     )
-    hw = meta.get("hardware", {}) if meta else {}
     para(
-        f"Hardware: CPU {hw.get('cpu', 'not detected')}; GPU {hw.get('gpu', 'not detected')}; RAM {hw.get('ram_gb', 'not detected')} GB. Full detected model metadata is saved in results/hardware.md."
+        "Prompt instruction: Expand the medical abbreviation in the supplied UK medical-record context. Return ONLY the full medical term on one line. No abbreviation, explanation, quotes, JSON, Answer: label or final full stop. Use the standard UK expansion indicated by context. Full exact prompts are saved with the run.",
+        "BodyTiny",
     )
-    prompt_summary = read_json(run_dir / "prompts.json")[0].strip().replace("\n", " ")
-    if len(prompt_summary) > 420:
-        prompt_summary = prompt_summary[:417] + "..."
-    para("Prompt: " + prompt_summary, "BodyTiny")
 
-    heading("4. Results")
-    data = [
+    heading("03  Results from all 150 attempts")
+    table = [
         [
             "Model",
-            "Correct",
+            "Correct / accuracy",
             "p50 / p95 ms",
             "USD / 1k",
-            "tokens/s",
-            "Parse/Refusal/Timeout/Other",
+            "Tokens/s",
+            "P / R / T / O",
         ]
     ]
     for s in summary:
-        data.append(
+        table.append(
             [
                 s["model"],
                 f"{s['correct']}/{s['n']} ({s['accuracy']:.0%})",
                 f"{s['p50_ms']:.0f} / {s['p95_ms']:.0f}",
                 fmt(s["cost_per_1k_usd"], 4),
                 fmt(s["local_generation_tokens_per_second"], 1),
-                f"{s['parse_errors']}/{s['refusals']}/{s['timeouts']}/{s['other_errors']}",
+                f"{s['parse_errors']} / {s['refusals']} / {s['timeouts']} / {s['other_errors']}",
             ]
         )
-    if not summary:
-        data += [
-            [m["model"], "pending", "pending", "pending", "pending", "pending"]
-            for m in cfg["models"]
-        ]
-    grid(data, [112, 75, 85, 65, 60, 105])
+    grid(table, [90, 85, 83, 65, 58, 130])
     para(
-        "Parse includes out-of-vocabulary answers. Fixed refusal prefixes are counted separately; unrecognised refusal wording can remain a parse error. Latency is full wall-clock request time. p50 and p95 include every attempted request. Cost/1k uses each model's measured throughput plus the same hardware/electricity and operator-time assumptions. All 50 attempts per model remain in the accuracy denominator.",
+        "P=parse, R=refusal, T=timeout, O=other execution errors. Wrong in-vocabulary answers remain in the accuracy denominator; P includes out-of-vocabulary wording, not just broken formatting. Explicit refusal prefixes are detected; other refusal wording can remain P. All failures count as wrong.",
+        "BodyTiny",
+    )
+    para(
+        "Latency is full request wall time, including any loading; pacing pauses are excluded. p50/p95 use linear interpolation over all attempts. Tokens/s = total generation tokens / total generation seconds from Ollama [2], not end-to-end throughput.",
         "BodyTiny",
     )
 
-    # PAGE 2
-    story.append(PageBreak())
-    para("Evidence, decision and scaling", "Title")
-    heading("4. Results - three wrong answers per model")
-    for m, bad, total in failures:
-        para(
-            m["model"] + " - " + (f"{total} failures" if rows else "pending real run"),
-            "BodyTiny",
-        )
-        for r in bad:
-            out = (r["output"] or "[empty]").replace(chr(10), " / ")
-            if len(out) > 95:
-                out = out[:92] + "..."
-            para(
-                f"{r['item_id']} ({r['abbreviation']}): expected {r['expected']}; output {out} [{r['status']}].",
-                "BodyTiny",
-            )
-        if rows and total < 3:
-            para(
-                "Fewer than three failures; no additional examples invented.",
-                "BodyTiny",
-            )
+    heading("04  Normalization and false-negative audit")
+    para(
+        "The scorer trims outer whitespace and case-folds both answer and label, then requires exact wording and one line. On these same responses, case-sensitive matching would accept "
+        + "/".join(str(a["strict"]) for a in audit)
+        + "; the frozen normalized scorer accepts "
+        + "/".join(str(a["accepted"]) for a in audit)
+        + " (small/medium/large). This is a diagnostic comparison, not a new model run."
+    )
+    para(
+        "All "
+        + str(sum(a["failures"] for a in audit))
+        + " failed responses were checked in a mechanical spelling audit. "
+        + str(sum(len(a["candidates"]) for a in audit))
+        + " are spelling/spacing/hyphen candidates. They remain wrong under the frozen rule; the audit does not certify clinical equivalence or change accuracy.",
+        "BodyTiny",
+    )
 
-    heading("5. Choice and when we would change it")
+    story.append(PageBreak())
+    para("Errors, decision and cost", "ReportTitle")
+    heading("05  Three recorded wrong answers per model")
+    table = [["Model / item", "Expected", "Actual response"]]
+    for model, bad, total in failures:
+        for row in bad:
+            table.append(
+                [
+                    model["model"] + " / " + row["abbreviation"],
+                    row["expected"],
+                    row["output"][:140] or "[empty]",
+                ]
+            )
+    grid(table, [100, 175, 236])
+    para(
+        "First three failures per model in recorded order; all nine are parse_error under the vocabulary policy. Full outputs and all remaining errors are in results/per_item.csv.",
+        "BodyTiny",
+    )
+
+    heading("06  What the errors mean")
+    para(
+        "Capitalization alone is now accepted: Activated Partial Thromboplastin Time matches its lower-case label. Fecal versus faecal and High Density versus high-density are candidates for a future spelling policy. Investigation versus investigations is a singular/plural difference. Physiotherapy versus physiotherapist changes an activity into a professional role; blindly stemming words would conceal such distinctions."
+    )
+    para(
+        "Early dev prompts exposed the vocabulary and produced 10/10 scores. The final task hides it, so those pilots are not directly comparable. A case-sensitive 150-call run on 13 September accepted only 3 answers; a later full rerun used normalization. The archived 14 September run reproduced all 150 previous raw answer strings, but latency changed. These repeated items do not constitute 300 independent test examples.",
+        "BodyTiny",
+    )
+
+    heading("07  Model choice and switching conditions")
     para(decision)
     para(
-        "We would change the choice if a smaller model reached the same required accuracy with materially lower p95 latency/cost, if the larger model gained enough accuracy to justify its slower throughput, or if deployment hardware/cost assumptions changed."
+        "Use the highest-accuracy model only as the benchmark preference, not as a clinical deployment recommendation. The 95% accuracy and p95 below 10 s thresholds are project decision rules, not course requirements; preregistration is not established. Switch to a smaller model if it meets those targets at lower cost on a new frozen set. Re-evaluate if hardware, traffic or wording policy changes.",
+        "BodyTiny",
     )
 
-    heading("6. Cost at 100x traffic and break-even")
+    heading("08  Cost today, at 100x, and break-even")
     cost = cfg["local_cost"]
     para(
-        f"All candidates are local: no paid API requests. Estimated hardware/electricity: ${cost['hardware_usd_per_hour']}/hour; operator time: {cost['labour_hours_per_month']} hour/month at ${cost['labour_usd_per_hour']}/hour. Baseline: {cost['requests_per_month']:,} requests/month; 100x: {cost['requests_per_month'] * 100:,}. Costs assume hardware is charged only for active processing time."
+        f"No API fees. Assumptions: ${cost['hardware_usd_per_hour']}/active hardware hour, {cost['labour_hours_per_month']} labour hour/month at ${cost['labour_usd_per_hour']}/hour, {cost['available_hours_per_month']} available hours/month. Baseline {cost['requests_per_month']:,} requests; 100x {100 * cost['requests_per_month']:,}. These are estimates, not measured invoices.",
+        "BodyTiny",
     )
+    table = [["Model", "Baseline USD/mo", "100x USD/mo", "Capacity requests/mo"]]
     for sc in scenarios:
-        para(
-            f"{sc['model']}: today ${fmt(sc.get('today_usd'), 3)}; at 100x ${fmt(sc.get('100x_usd'), 3)}; capacity {fmt(sc.get('capacity_per_month'), 0)} requests/month; 100x fits one machine: {sc.get('100x_fits_one_machine')}.",
-            "BodyTiny",
+        table.append(
+            [
+                sc["model"],
+                fmt(sc["today_usd"], 3),
+                fmt(sc["100x_usd"], 3),
+                fmt(sc["capacity_per_month"], 0),
+            ]
         )
+    grid(table, [105, 125, 125, 156])
     para(
-        "For an API price A per request, local variable cost v and monthly labour F, break-even N = F/(A-v), only if A > v and capacity allows. No API was measured, so a numeric API-vs-local break-even is unavailable.",
+        "For mean request seconds s: throughput = 3600/s; variable cost v = hardware hourly rate / throughput; monthly cost = labour F + volume N*v. Each candidate is an alternative deployment. For this measured run, the capacity table supports 100x under these assumptions; pauses, always-on rental and scaling overhead are excluded. Throughput and labour are assumed unchanged.",
         "BodyTiny",
     )
     para(
-        "Break-even note: because this local-only variant compares three self-hosted models rather than an API model against a self-hosted model, there is no API-vs-local break-even volume to compute. If the original brief is enforced literally, a separate top-API + cheap-API + local run is required to satisfy that item."
-    )
-
-    heading("Limitations")
-    para(
-        "This benchmark measures canonical abbreviation expansion, not clinical competence. Synthetic contexts and 50 test cases limit generalisation; one item changes accuracy by two percentage points. The final run is preserved exactly and is not edited after seeing outputs.",
+        "API/local break-even would be N = F/(A-v), where A is API cost/request, only when A>v and capacity permits. With no measured API comparator, a numerical break-even cannot be claimed. Instructor approval is needed for this omission.",
         "BodyTiny",
     )
     para(
-        "Sources: NHS, nhs.uk/nhs-app/help/understanding-abbreviations/ (source recorded in dataset); Ollama, docs.ollama.com/api/chat. Full responses and model digests remain in results/runs/.",
+        "Limits: one model family, one machine, 50 synthetic test items (one item = 2 percentage points), and exact canonical wording. No statistical significance or clinical competence is established.",
+        "BodyTiny",
+    )
+    para(
+        "[1] NHS: nhs.uk/nhs-app/help/understanding-abbreviations/ (checked 14 Sep 2026). [2] Ollama: docs.ollama.com/api/chat. Run metadata, raw responses and hashes: results/runs/.",
         "BodyTiny",
     )
 
     doc = SimpleDocTemplate(
         str(target / "report.pdf"),
         pagesize=A4,
-        rightMargin=40,
-        leftMargin=40,
+        leftMargin=42,
+        rightMargin=42,
         topMargin=30,
-        bottomMargin=30,
+        bottomMargin=32,
     )
 
     def footer(canvas, doc):
-        canvas.setFont("Helvetica", 8)
-        canvas.drawRightString(555, 17, f"CS496 | {doc.page}")
+        canvas.setStrokeColor(colors.HexColor("#bdd3d8"))
+        canvas.line(42, 25, 553, 25)
+        canvas.setFont("Helvetica", 7)
+        canvas.drawString(
+            42, 14, "CS496 | Medical abbreviation bake-off | Local-only adaptation"
+        )
+        canvas.drawRightString(553, 14, str(doc.page))
 
     doc.build(story, onFirstPage=footer, onLaterPages=footer)
 

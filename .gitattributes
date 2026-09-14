@@ -1,0 +1,2 @@
+# Preserve PDF bytes when committing on Windows.
+*.pdf -text
