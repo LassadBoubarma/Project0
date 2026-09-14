@@ -19,6 +19,16 @@ open a terminal in this project folder.
 python -m src.run --setup
 ```
 
+If setup says that the `ollama` command is unavailable, install Ollama and
+restart PowerShell so its command is added to `PATH`. If it says the local
+service is not running, launch the Ollama application first. You can verify
+both from PowerShell:
+
+```powershell
+ollama --version
+Invoke-WebRequest http://localhost:11434/api/tags
+```
+
 **2. Open the dashboard:**
 
 ```powershell
@@ -49,11 +59,11 @@ Keep the terminal open. Press **Ctrl+C** to stop.
 
 Run: `20260914T001358897252Z`
 
-| Model | Correct | Accuracy | p50 ms | p95 ms | USD / 1k | Tokens/s | Parse | Refusal | Timeout | Other |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| qwen2.5:1.5b | 16/50 | 32.0% | 2228 | 2413 | 5.0950 | 50.6 | 33 | 0 | 0 | 0 |
-| qwen2.5:3b | 16/50 | 32.0% | 2223 | 2361 | 5.0956 | 58.7 | 33 | 0 | 0 | 0 |
-| qwen2.5:7b | 27/50 | 54.0% | 2272 | 2387 | 5.0989 | 37.0 | 22 | 0 | 0 | 0 |
+| Model        | Correct | Accuracy | p50 ms | p95 ms | USD / 1k | Tokens/s | Parse | Refusal | Timeout | Other |
+| ------------ | ------: | -------: | -----: | -----: | -------: | -------: | ----: | ------: | ------: | ----: |
+| qwen2.5:1.5b |   16/50 |    32.0% |   2228 |   2413 |   5.0950 |     50.6 |    33 |       0 |       0 |     0 |
+| qwen2.5:3b   |   16/50 |    32.0% |   2223 |   2361 |   5.0956 |     58.7 |    33 |       0 |       0 |     0 |
+| qwen2.5:7b   |   27/50 |    54.0% |   2272 |   2387 |   5.0989 |     37.0 |    22 |       0 |       0 |     0 |
 
 No model meets the project's 95% accuracy + p95<10s target. For this benchmark, choose the highest-accuracy model: qwen2.5:7b at 27/50 (54.0%).
 
@@ -68,13 +78,13 @@ not evidence that a model is suitable for clinical use.
 
 ## Where to find things
 
-| File or folder | What it contains |
-|---|---|
-| [report.pdf](report.pdf) | Two-page report: results, mistakes, model choice and costs at 100x traffic |
-| [postmortem.md](postmortem.md) | Problems we encountered and what we learned |
-| [data/](data/) | Questions, correct answers and label-review records |
-| [src/](src/) | Prompt, runner, scorer, cost calculation and dashboard |
-| [results/](results/) | Saved answers, measurements and hardware details |
+| File or folder                 | What it contains                                                           |
+| ------------------------------ | -------------------------------------------------------------------------- |
+| [report.pdf](report.pdf)       | Two-page report: results, mistakes, model choice and costs at 100x traffic |
+| [postmortem.md](postmortem.md) | Problems we encountered and what we learned                                |
+| [data/](data/)                 | Questions, correct answers and label-review records                        |
+| [src/](src/)                   | Prompt, runner, scorer, cost calculation and dashboard                     |
+| [results/](results/)           | Saved answers, measurements and hardware details                           |
 
 ## Useful commands
 
