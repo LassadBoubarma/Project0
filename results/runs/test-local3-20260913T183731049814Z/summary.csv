@@ -1,0 +1,4 @@
+role,model,n,correct,accuracy,parse_errors,refusals,timeouts,other_errors,p50_ms,p95_ms,mean_ms,cost_per_1k_usd,cost_status,local_generation_tokens_per_second
+small_local,qwen2.5:1.5b,50,16,0.32,33,0,0,0,2264.1590000130236,2398.5416899988195,2285.9687120001763,5.095248696333341,estimated from measured throughput,48.2286646311262
+medium_local,qwen2.5:3b,50,16,0.32,33,0,0,0,2322.574150006403,2427.6972349907737,2360.459094000398,5.098352462250016,estimated from measured throughput,37.665392856369046
+large_local,qwen2.5:7b,50,27,0.54,22,0,0,0,2368.577200002619,2453.932390002592,2432.8850579983555,5.1013702107499315,estimated from measured throughput,33.93310196973396

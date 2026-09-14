@@ -1,1 +1,0 @@
-Decision pending real results. Predeclared rule: choose the lowest-cost model reaching at least 95% exact-match accuracy and p95 below 10 seconds; if none qualifies, report that none meets the target.
