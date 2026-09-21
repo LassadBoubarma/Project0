@@ -19,6 +19,16 @@ open a terminal in this project folder.
 python -m src.run --setup
 ```
 
+If setup says that the `ollama` command is unavailable, install Ollama and
+restart PowerShell so its command is added to `PATH`. If it says the local
+service is not running, launch the Ollama application first. You can verify
+both from PowerShell:
+
+```powershell
+ollama --version
+Invoke-WebRequest http://localhost:11434/api/tags
+```
+
 **2. Open the dashboard:**
 
 ```powershell
@@ -68,13 +78,13 @@ not evidence that a model is suitable for clinical use.
 
 ## Where to find things
 
-| File or folder | What it contains |
-|---|---|
-| [report.pdf](report.pdf) | Two-page report: results, mistakes, model choice and costs at 100x traffic |
-| [postmortem.md](postmortem.md) | Problems we encountered and what we learned |
-| [data/](data/) | Questions, correct answers and label-review records |
-| [src/](src/) | Prompt, runner, scorer, cost calculation and dashboard |
-| [results/](results/) | Saved answers, measurements and hardware details |
+| File or folder                 | What it contains                                                           |
+| ------------------------------ | -------------------------------------------------------------------------- |
+| [report.pdf](report.pdf)       | Two-page report: results, mistakes, model choice and costs at 100x traffic |
+| [postmortem.md](postmortem.md) | Problems we encountered and what we learned                                |
+| [data/](data/)                 | Questions, correct answers and label-review records                        |
+| [src/](src/)                   | Prompt, runner, scorer, cost calculation and dashboard                     |
+| [results/](results/)           | Saved answers, measurements and hardware details                           |
 
 ## Useful commands
 

@@ -310,10 +310,19 @@ def setup():
 
     if sys.version_info < (3, 10):
         raise ValueError("Install Python 3.10 or newer.")
-    if not shutil.which("ollama"):
+    ollama = shutil.which("ollama")
+    if not ollama:
         raise ValueError(
-            "Install and start Ollama from https://ollama.com, then rerun setup."
+            "The 'ollama' command is not available. Install Ollama from "
+            "https://ollama.com/download, restart PowerShell, then rerun setup."
         )
+    try:
+        request_json("http://localhost:11434/api/tags", timeout=5)
+    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+        raise ValueError(
+            "Ollama is installed but its local service is not running. "
+            "Start Ollama, then rerun setup."
+        ) from exc
     venv.create(ROOT / ".venv", with_pip=True)
     python = (
         ROOT / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
@@ -330,7 +339,7 @@ def setup():
     }
     for model in read_json(ROOT / "config.json")["models"]:
         if model["model"] not in installed:
-            subprocess.run(["ollama", "pull", model["model"]], check=True)
+            subprocess.run([ollama, "pull", model["model"]], check=True)
     print("Setup complete. Start with: .venv/Scripts/python.exe -m src.dashboard")
 
 
