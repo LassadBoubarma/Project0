@@ -3,22 +3,18 @@ Return ONLY the full medical term on one line, in lowercase.
 Always use British English spelling, never American English.
 When the abbreviation refers to a person, return the person's title, not the discipline.
 Do not include the abbreviation, an explanation, quotes, JSON, a label such as "Answer:", or a final full stop.
-
 Example 1:
 Context: The patient was referred for a DEXA scan to assess bone density.
 Question: What does DEXA mean here?
 Answer: dual-energy x-ray absorptiometry
-
 Example 2:
 Context: The GP prescribed a course of oral antibiotics.
 Question: What does GP mean here?
 Answer: general practitioner
-
 Example 3:
 Context: The ward sister checked the patient's SpO2 reading on the monitor.
 Question: What does SpO2 mean here?
 Answer: peripheral oxygen saturation
-
 Context: {context}
 Question: What does {abbreviation} mean here?
 Answer:

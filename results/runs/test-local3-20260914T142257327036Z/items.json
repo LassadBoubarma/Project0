@@ -1,0 +1,352 @@
+[
+  {
+    "id": "test_001",
+    "abbreviation": "AMHP",
+    "context": "An AMHP coordinated the statutory mental health assessment.",
+    "expected": "approved mental health professional",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_002",
+    "abbreviation": "APTT",
+    "context": "The coagulation laboratory reported an APTT result.",
+    "expected": "activated partial thromboplastin time",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_003",
+    "abbreviation": "BNO",
+    "context": "The nursing bowel chart recorded BNO today.",
+    "expected": "bowels not open",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_004",
+    "abbreviation": "BO",
+    "context": "The nursing bowel chart recorded BO after breakfast.",
+    "expected": "bowels open",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_005",
+    "abbreviation": "CMHN",
+    "context": "A CMHN arranged a mental health home visit.",
+    "expected": "community mental health nurse",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_006",
+    "abbreviation": "CPN",
+    "context": "The psychiatric service assigned a CPN for home follow-up.",
+    "expected": "community psychiatric nurse",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_007",
+    "abbreviation": "CSU",
+    "context": "The nurse collected a CSU through the urinary catheter.",
+    "expected": "catheter stream urine sample",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_008",
+    "abbreviation": "DNACPR",
+    "context": "The resuscitation decision form was marked DNACPR.",
+    "expected": "do not attempt cardiopulmonary resuscitation",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_009",
+    "abbreviation": "DNAR",
+    "context": "The patient's resuscitation decision was documented as DNAR.",
+    "expected": "do not attempt resuscitation",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_010",
+    "abbreviation": "DNR",
+    "context": "The resuscitation status field contained DNR.",
+    "expected": "do not resuscitate",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_011",
+    "abbreviation": "Dx",
+    "context": "The clinician entered pneumonia under the heading Dx.",
+    "expected": "diagnosis",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_012",
+    "abbreviation": "ED",
+    "context": "The ambulance brought the patient to the hospital ED.",
+    "expected": "emergency department",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_013",
+    "abbreviation": "EMU",
+    "context": "The laboratory requested an EMU collected after waking.",
+    "expected": "early morning urine sample",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_014",
+    "abbreviation": "ESR",
+    "context": "The inflammation blood panel included ESR.",
+    "expected": "erythrocyte sedimentation rate",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_015",
+    "abbreviation": "EUA",
+    "context": "The surgical team planned an EUA in theatre.",
+    "expected": "examination under anaesthetic",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_016",
+    "abbreviation": "FBC",
+    "context": "The laboratory analysed an FBC blood sample.",
+    "expected": "full blood count",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_017",
+    "abbreviation": "FOBT",
+    "context": "The laboratory requested an FOBT to investigate hidden bleeding.",
+    "expected": "faecal occult blood test",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_018",
+    "abbreviation": "FIT",
+    "context": "The bowel screening kit was labelled FIT.",
+    "expected": "faecal immunochemical test",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_019",
+    "abbreviation": "GA",
+    "context": "The operation was performed under GA with the patient unconscious.",
+    "expected": "general anaesthetic",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_020",
+    "abbreviation": "Hb",
+    "context": "The blood test reported a low Hb concentration.",
+    "expected": "haemoglobin",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_021",
+    "abbreviation": "HCA",
+    "context": "An HCA helped the patient with washing on the ward.",
+    "expected": "healthcare assistant",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_022",
+    "abbreviation": "HCSW",
+    "context": "An HCSW assisted the nursing team with personal care.",
+    "expected": "healthcare support worker",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_023",
+    "abbreviation": "HDL",
+    "context": "The lipid profile included an HDL cholesterol measurement.",
+    "expected": "high-density lipoprotein",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_024",
+    "abbreviation": "HRT",
+    "context": "The menopause clinic reviewed the patient's HRT.",
+    "expected": "hormone replacement therapy",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_025",
+    "abbreviation": "Ht",
+    "context": "The growth chart recorded Ht in centimetres.",
+    "expected": "height",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_026",
+    "abbreviation": "Hx",
+    "context": "The clinician used Hx as the heading for the patient's background.",
+    "expected": "history",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_027",
+    "abbreviation": "INR",
+    "context": "The anticoagulation clinic checked INR during warfarin monitoring.",
+    "expected": "international normalised ratio",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_028",
+    "abbreviation": "IVI",
+    "context": "The ward prescription specified an IVI delivered through a vein.",
+    "expected": "intravenous infusion",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_029",
+    "abbreviation": "IVP",
+    "context": "Radiology arranged an IVP examination of the urinary tract.",
+    "expected": "intravenous pyelogram",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_030",
+    "abbreviation": "Ix",
+    "context": "The doctor's plan listed blood tests under Ix.",
+    "expected": "investigations",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_031",
+    "abbreviation": "LA",
+    "context": "The skin procedure was performed under LA with the patient awake.",
+    "expected": "local anaesthetic",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_032",
+    "abbreviation": "LDL",
+    "context": "The lipid profile included an LDL cholesterol result.",
+    "expected": "low-density lipoprotein",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_033",
+    "abbreviation": "LFT",
+    "context": "The clinician requested an LFT blood panel for liver assessment.",
+    "expected": "liver function test",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_034",
+    "abbreviation": "LMP",
+    "context": "The gynaecology history recorded the date of the LMP.",
+    "expected": "last menstrual period",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_035",
+    "abbreviation": "M/R",
+    "context": "The medication formulation was marked M/R on its packaging.",
+    "expected": "modified release",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_036",
+    "abbreviation": "MSU",
+    "context": "The patient provided an MSU in a sterile pot during urination.",
+    "expected": "mid-stream urine sample",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_037",
+    "abbreviation": "NAD",
+    "context": "The examination findings were summarised as NAD.",
+    "expected": "nothing abnormal discovered",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_038",
+    "abbreviation": "NAI",
+    "context": "The safeguarding team assessed a suspected NAI.",
+    "expected": "non-accidental injury",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_039",
+    "abbreviation": "NBM",
+    "context": "The preoperative eating and drinking instruction was NBM.",
+    "expected": "nil by mouth",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_040",
+    "abbreviation": "NG",
+    "context": "The team inserted an NG tube through the nose for feeding.",
+    "expected": "nasogastric",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_041",
+    "abbreviation": "NoF",
+    "context": "The orthopaedic diagnosis was a fracture of the NoF.",
+    "expected": "neck of femur",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_042",
+    "abbreviation": "OT",
+    "context": "An OT assessed the patient's ability to manage daily activities.",
+    "expected": "occupational therapist",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_043",
+    "abbreviation": "POD",
+    "context": "The foot-care service arranged a review with a POD.",
+    "expected": "podiatrist",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_044",
+    "abbreviation": "PT",
+    "context": "A PT supervised rehabilitation exercises after surgery.",
+    "expected": "physiotherapist",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_045",
+    "abbreviation": "POP",
+    "context": "The fracture clinic applied a POP cast.",
+    "expected": "plaster of paris",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_046",
+    "abbreviation": "PTT",
+    "context": "The coagulation report listed a PTT result.",
+    "expected": "partial thromboplastin time",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_047",
+    "abbreviation": "PU",
+    "context": "The nursing output chart recorded PU after catheter removal.",
+    "expected": "passed urine",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_048",
+    "abbreviation": "RNLD",
+    "context": "An RNLD supported the patient at a learning disability clinic.",
+    "expected": "learning disability nurse",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_049",
+    "abbreviation": "ROSC",
+    "context": "The resuscitation team documented ROSC after a pulse returned.",
+    "expected": "return of spontaneous circulation",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  },
+  {
+    "id": "test_050",
+    "abbreviation": "S/R",
+    "context": "The medication formulation was marked S/R on its packaging.",
+    "expected": "sustained release",
+    "source": "https://www.nhs.uk/nhs-app/help/understanding-abbreviations/"
+  }
+]

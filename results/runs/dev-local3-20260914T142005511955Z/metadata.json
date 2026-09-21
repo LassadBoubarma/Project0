@@ -1,0 +1,89 @@
+{
+  "started_utc": "20260914T142005511955Z",
+  "split": "dev",
+  "scope": "small_model_practice",
+  "settings": {
+    "temperature": 0,
+    "max_output_tokens": 64,
+    "timeout_seconds": 180,
+    "pause_seconds": 1,
+    "models": [
+      {
+        "role": "small_local",
+        "provider": "ollama",
+        "model": "qwen2.5:1.5b",
+        "label": "Small local model"
+      }
+    ],
+    "local_cost": {
+      "hardware_usd_per_hour": 0.15,
+      "labour_hours_per_month": 1,
+      "labour_usd_per_hour": 5,
+      "requests_per_month": 1000,
+      "available_hours_per_month": 160
+    },
+    "notes": "All three models run locally through Ollama on the same machine. Same 50 frozen test items, same hidden-answer prompt, temperature 0, output limit 64, exact scorer and sequential calls. The local cost scenario is applied separately using each model's measured throughput."
+  },
+  "sha256": {
+    "config.json": "3233f1a0a6662eacdfb42617f61eea024f0c775e2fdbd7b9bc73ae1375cf936b",
+    "data/items.jsonl": "1e79aff4c6932efb80b697a4a7be65a5360d7fe88b740d7deb68b7097f186a6e",
+    "data/dev.jsonl": "714d33da82b03379da09d9e34a656959b0d39afea62727f405ca8b46018397f1",
+    "data/word_list.json": "475c3c02ecec479146c3de46b234a7979052e7c7ed5124963e9cd9fcaae39e65",
+    "data/label_reviews.csv": "2d1519c40973548ec9c9e7961103642e1e58db0ad2bc47c5f3f9409657326212",
+    "src/prompt.txt": "4a78c42286b0afcdd6e84f979e7479c6d0a7381c74e53c5ca28df12e579f2bbf",
+    "src/run.py": "22d809bc6a61514e448e54684b2f5f53e22230c95432e60f2e54ccdf1c34df53",
+    "src/score.py": "e20bfb7f35e5e4c42b33bedddef460a0ced4e58a1e619b9591cc43212b8d24f6",
+    "src/cost.py": "17ce045d6ac824e4dcfece9069ba75de62378b9e7afa3d4f9c95f1a1f145bd28"
+  },
+  "hardware": {
+    "models": {
+      "small_local": {
+        "name": "qwen2.5:1.5b",
+        "model": "qwen2.5:1.5b",
+        "modified_at": "2026-09-14T15:30:17.2868007+02:00",
+        "size": 986061892,
+        "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "1.5B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 1536
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      }
+    },
+    "ollama_version": {
+      "version": "0.34.0"
+    },
+    "os": "Windows-11-10.0.26200-SP0",
+    "cpu": "AMD Ryzen 5 PRO 7540U w/ Radeon 740M Graphics",
+    "python": "3.14.7",
+    "ram_gb": "14.7",
+    "gpu": "AMD Radeon(TM) 740M"
+  },
+  "item_ids": [
+    "dev_001",
+    "dev_002",
+    "dev_003",
+    "dev_004",
+    "dev_005",
+    "dev_006",
+    "dev_007",
+    "dev_008",
+    "dev_009",
+    "dev_010"
+  ],
+  "complete": true,
+  "latency_policy": "Full request wall time for every attempt; any model loading during requests included; pauses excluded.",
+  "retries": 0,
+  "finished_utc": "2026-09-14T14:20:44.483166+00:00"
+}

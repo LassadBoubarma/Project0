@@ -111,10 +111,10 @@ class RefactorTests(unittest.TestCase):
     def test_saved_raw_evidence_reproduces_original_scores(self):
         from src import run, report
 
-        path = run.ROOT / "results/runs/test-local3-20260913T183731049814Z"
+        path = run.ROOT / "results/runs/test-local3-20260914T142257327036Z"
         rows, metadata = report.validate_run(path)
         summary = report.summarise(rows, metadata["settings"])
-        self.assertEqual([row["correct"] for row in summary], [16, 16, 27])
+        self.assertEqual([row["correct"] for row in summary], [15, 24, 29])
         self.assertEqual([row["n"] for row in summary], [50, 50, 50])
 
     def test_invalid_config_is_rejected(self):

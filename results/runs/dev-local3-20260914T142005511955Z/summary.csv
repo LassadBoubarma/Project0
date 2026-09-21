@@ -1,0 +1,2 @@
+role,model,n,correct,accuracy,parse_errors,refusals,timeouts,other_errors,p50_ms,p95_ms,mean_ms,cost_per_1k_usd,cost_status,local_generation_tokens_per_second
+small_local,qwen2.5:1.5b,10,9,0.9,1,0,0,0,2500.745849974919,4811.118974987762,2893.8820299867075,5.120578417916113,estimated from measured throughput,34.55432040798489

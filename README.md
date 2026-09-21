@@ -47,15 +47,15 @@ Keep the terminal open. Press **Ctrl+C** to stop.
 
 <!-- RESULTS_START -->
 
-Run: `20260914T001358897252Z`
+Run: `20260914T142257327036Z`
 
 | Model | Correct | Accuracy | p50 ms | p95 ms | USD / 1k | Tokens/s | Parse | Refusal | Timeout | Other |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| qwen2.5:1.5b | 16/50 | 32.0% | 2228 | 2413 | 5.0950 | 50.6 | 33 | 0 | 0 | 0 |
-| qwen2.5:3b | 16/50 | 32.0% | 2223 | 2361 | 5.0956 | 58.7 | 33 | 0 | 0 | 0 |
-| qwen2.5:7b | 27/50 | 54.0% | 2272 | 2387 | 5.0989 | 37.0 | 22 | 0 | 0 | 0 |
+| qwen2.5:1.5b | 15/50 | 30.0% | 2654 | 3051 | 5.1127 | 12.7 | 35 | 0 | 0 | 0 |
+| qwen2.5:3b | 24/50 | 48.0% | 3280 | 3885 | 5.1429 | 6.6 | 25 | 0 | 0 | 0 |
+| qwen2.5:7b | 29/50 | 58.0% | 4324 | 5092 | 5.1933 | 4.2 | 17 | 0 | 0 | 0 |
 
-No model meets the project's 95% accuracy + p95<10s target. For this benchmark, choose the highest-accuracy model: qwen2.5:7b at 27/50 (54.0%).
+No model meets the project's 95% accuracy + p95<10s target. For this benchmark, choose the highest-accuracy model: qwen2.5:7b at 29/50 (58.0%).
 
 <!-- RESULTS_END -->
 

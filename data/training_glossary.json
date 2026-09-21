@@ -1,0 +1,652 @@
+[
+  {
+    "abbreviation": "#",
+    "expansion": "fracture",
+    "category": "clinical notation",
+    "example_contexts": [
+      "The X-ray report showed a # of the left radius.",
+      "The orthopaedic consultant noted a hairline # on the scan.",
+      "Patient admitted following a fall with suspected # of the wrist."
+    ]
+  },
+  {
+    "abbreviation": "A&E",
+    "expansion": "accident and emergency",
+    "category": "department",
+    "example_contexts": [
+      "The patient attended A&E presenting with acute chest pain.",
+      "Paramedics conveyed the casualty directly to the local A&E.",
+      "Triage assessment was performed upon arrival in A&E."
+    ]
+  },
+  {
+    "abbreviation": "AF",
+    "expansion": "atrial fibrillation",
+    "category": "cardiology",
+    "example_contexts": [
+      "The ECG rhythm strip indicated newly diagnosed AF.",
+      "The cardiologist prescribed anticoagulation for chronic AF.",
+      "The patient was admitted with rapid AF and palpitations."
+    ]
+  },
+  {
+    "abbreviation": "AMHP",
+    "expansion": "approved mental health professional",
+    "category": "staff role",
+    "example_contexts": [
+      "An AMHP coordinated the statutory mental health assessment.",
+      "The hospital liaised with the designated AMHP regarding sectioning.",
+      "An AMHP conducted the formal review under the Mental Health Act."
+    ]
+  },
+  {
+    "abbreviation": "APTT",
+    "expansion": "activated partial thromboplastin time",
+    "category": "haematology",
+    "example_contexts": [
+      "The coagulation laboratory reported an elevated APTT result.",
+      "Heparin therapy was adjusted in response to the latest APTT.",
+      "The haematologist requested a repeat APTT alongside INR."
+    ]
+  },
+  {
+    "abbreviation": "BMI",
+    "expansion": "body mass index",
+    "category": "clinical measurement",
+    "example_contexts": [
+      "The weight-management clinic calculated the patient's BMI as 28.",
+      "The nurse recorded baseline height, weight and BMI.",
+      "Referral criteria required a BMI measurement within the last month."
+    ]
+  },
+  {
+    "abbreviation": "BNO",
+    "expansion": "bowels not open",
+    "category": "nursing notation",
+    "example_contexts": [
+      "The nursing bowel chart recorded BNO for three consecutive days.",
+      "Post-operative notes indicated BNO since admission.",
+      "The ward staff documented BNO and administered a mild laxative."
+    ]
+  },
+  {
+    "abbreviation": "BO",
+    "expansion": "bowels open",
+    "category": "nursing notation",
+    "example_contexts": [
+      "The nursing bowel chart recorded BO after breakfast.",
+      "Morning nursing handover noted BO with normal consistency.",
+      "The recovery protocol documented BO prior to patient discharge."
+    ]
+  },
+  {
+    "abbreviation": "BP",
+    "expansion": "blood pressure",
+    "category": "vital signs",
+    "example_contexts": [
+      "The nurse recorded sitting and standing BP before the consultation.",
+      "Antihypertensive medication was reviewed due to elevated BP.",
+      "Manual BP monitoring showed 135/85 mmHg."
+    ]
+  },
+  {
+    "abbreviation": "CMHN",
+    "expansion": "community mental health nurse",
+    "category": "staff role",
+    "example_contexts": [
+      "A CMHN arranged a mental health home visit for medication review.",
+      "The primary care team referred the patient to the local CMHN.",
+      "Weekly home visits were conducted by the designated CMHN."
+    ]
+  },
+  {
+    "abbreviation": "CPN",
+    "expansion": "community psychiatric nurse",
+    "category": "staff role",
+    "example_contexts": [
+      "The psychiatric service assigned a CPN for ongoing home follow-up.",
+      "The CPN visited the patient to monitor treatment compliance.",
+      "Liaison psychiatry arranged support from an allocated CPN."
+    ]
+  },
+  {
+    "abbreviation": "CSF",
+    "expansion": "cerebrospinal fluid",
+    "category": "laboratory",
+    "example_contexts": [
+      "The microbiology laboratory received CSF after a lumbar puncture.",
+      "Analysis of CSF showed no evidence of bacterial meningitis.",
+      "Clear CSF was obtained during the diagnostic procedure."
+    ]
+  },
+  {
+    "abbreviation": "CSU",
+    "expansion": "catheter stream urine sample",
+    "category": "laboratory",
+    "example_contexts": [
+      "The nurse collected a CSU through the indwelling urinary catheter.",
+      "Microbiology tested the CSU specimen for suspected catheter-associated infection.",
+      "A fresh CSU was dispatched to the laboratory for culture and sensitivity."
+    ]
+  },
+  {
+    "abbreviation": "CVP",
+    "expansion": "central venous pressure",
+    "category": "monitoring",
+    "example_contexts": [
+      "The intensive care team monitored CVP through a central line.",
+      "Fluid resuscitation was guided by continuous CVP measurements.",
+      "The CVP waveform remained stable throughout the surgical procedure."
+    ]
+  },
+  {
+    "abbreviation": "CXR",
+    "expansion": "chest X-ray",
+    "category": "imaging",
+    "example_contexts": [
+      "The clinician requested an urgent CXR to assess the lungs for consolidation.",
+      "Portable CXR confirmed correct positioning of the endotracheal tube.",
+      "No active pulmonary lesions were observed on the follow-up CXR."
+    ]
+  },
+  {
+    "abbreviation": "DEXA",
+    "expansion": "dual-energy x-ray absorptiometry",
+    "category": "imaging",
+    "example_contexts": [
+      "The rheumatology department scheduled a DEXA scan to evaluate bone mineral density.",
+      "The GP ordered a DEXA scan following a fragility fracture.",
+      "T-scores from the DEXA examination confirmed osteoporosis."
+    ]
+  },
+  {
+    "abbreviation": "DNACPR",
+    "expansion": "do not attempt cardiopulmonary resuscitation",
+    "category": "clinical decision",
+    "example_contexts": [
+      "The resuscitation decision form was marked DNACPR after multidisciplinary discussion.",
+      "A valid DNACPR order was placed in the front of the medical record.",
+      "The consultant discussed the DNACPR recommendation with the patient's family."
+    ]
+  },
+  {
+    "abbreviation": "DNAR",
+    "expansion": "do not attempt resuscitation",
+    "category": "clinical decision",
+    "example_contexts": [
+      "The patient's resuscitation decision was documented as DNAR.",
+      "The ward team confirmed the existing DNAR status during handover.",
+      "The DNAR documentation was reviewed prior to transfer to hospice care."
+    ]
+  },
+  {
+    "abbreviation": "DNR",
+    "expansion": "do not resuscitate",
+    "category": "clinical decision",
+    "example_contexts": [
+      "The electronic health record resuscitation status field contained DNR.",
+      "Clinical notes clearly specified a DNR directive.",
+      "The emergency team noted the DNR status upon arrival."
+    ]
+  },
+  {
+    "abbreviation": "DVT",
+    "expansion": "deep vein thrombosis",
+    "category": "vascular",
+    "example_contexts": [
+      "Doppler ultrasound confirmed DVT in the patient's right lower limb.",
+      "Low-molecular-weight heparin was commenced for acute DVT.",
+      "The patient presented with calf swelling and clinical signs of DVT."
+    ]
+  },
+  {
+    "abbreviation": "Dx",
+    "expansion": "diagnosis",
+    "category": "clinical notation",
+    "example_contexts": [
+      "The clinician entered pneumonia under the heading Dx.",
+      "The discharge summary noted primary Dx as congestive heart failure.",
+      "Provisional Dx was established following clinical examination."
+    ]
+  },
+  {
+    "abbreviation": "ECG",
+    "expansion": "electrocardiogram",
+    "category": "cardiology",
+    "example_contexts": [
+      "A 12-lead ECG was recorded using skin electrodes on the chest and limbs.",
+      "The baseline ECG showed normal sinus rhythm with no ST changes.",
+      "An urgent ECG was performed upon onset of palpitations."
+    ]
+  },
+  {
+    "abbreviation": "ED",
+    "expansion": "emergency department",
+    "category": "department",
+    "example_contexts": [
+      "The ambulance brought the patient directly to the hospital ED.",
+      "The ED registrar carried out the initial trauma assessment.",
+      "Overnight admissions through the ED remained high."
+    ]
+  },
+  {
+    "abbreviation": "EEG",
+    "expansion": "electroencephalogram",
+    "category": "neurology",
+    "example_contexts": [
+      "Neurology requested a routine EEG to record electrical brain activity.",
+      "Sleep-deprived EEG was conducted to evaluate suspected seizure activity.",
+      "The EEG tracing revealed focal epileptiform discharges."
+    ]
+  },
+  {
+    "abbreviation": "EMU",
+    "expansion": "early morning urine sample",
+    "category": "laboratory",
+    "example_contexts": [
+      "The laboratory requested an EMU collected immediately after waking.",
+      "Three consecutive EMU specimens were sent for acid-fast bacilli testing.",
+      "Instructions were provided for collecting a first-void EMU at home."
+    ]
+  },
+  {
+    "abbreviation": "ESR",
+    "expansion": "erythrocyte sedimentation rate",
+    "category": "haematology",
+    "example_contexts": [
+      "The systemic inflammation blood panel included ESR and CRP.",
+      "Markedly elevated ESR was noted in the polymyalgia rheumatica workup.",
+      "The haematology lab processed the ESR sample within two hours."
+    ]
+  },
+  {
+    "abbreviation": "EUA",
+    "expansion": "examination under anaesthetic",
+    "category": "surgery",
+    "example_contexts": [
+      "The gynaecology surgical team scheduled an EUA in theatre.",
+      "An EUA was performed to fully assess the extent of pelvic trauma.",
+      "Patient consent was obtained for EUA and concurrent biopsy."
+    ]
+  },
+  {
+    "abbreviation": "FBC",
+    "expansion": "full blood count",
+    "category": "haematology",
+    "example_contexts": [
+      "The laboratory analysed an FBC blood sample to check haemoglobin and white cells.",
+      "Preoperative workup included routine FBC, U&Es and clotting profile.",
+      "The FBC results demonstrated mild microcytic anaemia."
+    ]
+  },
+  {
+    "abbreviation": "FIT",
+    "expansion": "faecal immunochemical test",
+    "category": "screening",
+    "example_contexts": [
+      "The bowel cancer screening kit dispatched by post was labelled FIT.",
+      "A positive FIT result prompted urgent two-week-wait colonoscopy referral.",
+      "The primary care physician ordered a quantitative FIT for bowel symptom investigation."
+    ]
+  },
+  {
+    "abbreviation": "FOBT",
+    "expansion": "faecal occult blood test",
+    "category": "screening",
+    "example_contexts": [
+      "The laboratory requested an FOBT to investigate hidden gastrointestinal bleeding.",
+      "Traditional FOBT sampling was replaced by quantitative immunochemical methods.",
+      "Stool samples were examined by FOBT during the anaemia investigation."
+    ]
+  },
+  {
+    "abbreviation": "GA",
+    "expansion": "general anaesthetic",
+    "category": "anaesthetics",
+    "example_contexts": [
+      "The major operation was performed under GA with the patient fully unconscious.",
+      "Anaesthetic pre-assessment evaluated airway risks prior to GA.",
+      "The patient recovered smoothly following administration of GA."
+    ]
+  },
+  {
+    "abbreviation": "GP",
+    "expansion": "general practitioner",
+    "category": "staff role",
+    "example_contexts": [
+      "The GP prescribed a course of oral antibiotics following examination.",
+      "A referral letter was dispatched by the patient's registered GP.",
+      "The GP surgery provided ongoing chronic disease management."
+    ]
+  },
+  {
+    "abbreviation": "Hb",
+    "expansion": "haemoglobin",
+    "category": "haematology",
+    "example_contexts": [
+      "The blood test reported a low Hb concentration of 85 g/L.",
+      "Iron infusion was indicated due to chronically reduced Hb levels.",
+      "Post-transfusion checks confirmed a significant rise in Hb."
+    ]
+  },
+  {
+    "abbreviation": "HCA",
+    "expansion": "healthcare assistant",
+    "category": "staff role",
+    "example_contexts": [
+      "An HCA helped the patient with washing and personal care on the ward.",
+      "The ward HCA recorded the morning routine temperature and pulse.",
+      "Under nursing supervision, the HCA assisted with patient mobilisation."
+    ]
+  },
+  {
+    "abbreviation": "HCSW",
+    "expansion": "healthcare support worker",
+    "category": "staff role",
+    "example_contexts": [
+      "An HCSW assisted the nursing team with patient observations.",
+      "The community clinic employed an HCSW for phlebotomy duties.",
+      "Patient transfers were supported by the ward HCSW."
+    ]
+  },
+  {
+    "abbreviation": "HDL",
+    "expansion": "high-density lipoprotein",
+    "category": "biochemistry",
+    "example_contexts": [
+      "The fasting lipid profile included an HDL cholesterol measurement.",
+      "Favourable cardiovascular risk was associated with elevated HDL levels.",
+      "The serum lipid panel quantified total cholesterol, triglycerides and HDL."
+    ]
+  },
+  {
+    "abbreviation": "HRT",
+    "expansion": "hormone replacement therapy",
+    "category": "therapeutics",
+    "example_contexts": [
+      "The menopause clinic reviewed the patient's current HRT prescription.",
+      "Transdermal HRT was initiated to alleviate vasomotor symptoms.",
+      "Contraindications were assessed prior to commencing combined HRT."
+    ]
+  },
+  {
+    "abbreviation": "Ht",
+    "expansion": "height",
+    "category": "clinical measurement",
+    "example_contexts": [
+      "The growth monitoring chart recorded Ht in centimetres.",
+      "Baseline Ht and weight were documented for body surface area calculation.",
+      "The paediatric assessment noted normal Ht velocity."
+    ]
+  },
+  {
+    "abbreviation": "Hx",
+    "expansion": "history",
+    "category": "clinical notation",
+    "example_contexts": [
+      "The clinician used Hx as the heading for the patient's medical background.",
+      "Past medical Hx revealed hypertension and type 2 diabetes mellitus.",
+      "Collateral Hx was obtained from the patient's spouse."
+    ]
+  },
+  {
+    "abbreviation": "INR",
+    "expansion": "international normalised ratio",
+    "category": "haematology",
+    "example_contexts": [
+      "The anticoagulation clinic checked INR during routine warfarin monitoring.",
+      "Target therapeutic range for INR was maintained between 2.0 and 3.0.",
+      "Warfarin dose was adjusted in response to an INR of 3.8."
+    ]
+  },
+  {
+    "abbreviation": "IVI",
+    "expansion": "intravenous infusion",
+    "category": "therapeutics",
+    "example_contexts": [
+      "The ward prescription specified an IVI delivered continuously through a peripheral cannula.",
+      "Maintenance fluid was administered as a 0.9% saline IVI over eight hours.",
+      "The nursing staff monitored the volumetric pump for the IVI."
+    ]
+  },
+  {
+    "abbreviation": "IVP",
+    "expansion": "intravenous pyelogram",
+    "category": "imaging",
+    "example_contexts": [
+      "Radiology arranged an IVP examination to visualise the urinary tract structure.",
+      "Contrast medium was injected to perform the diagnostic IVP.",
+      "Renal calculi and ureteric obstruction were evaluated with an IVP series."
+    ]
+  },
+  {
+    "abbreviation": "Ix",
+    "expansion": "investigations",
+    "category": "clinical notation",
+    "example_contexts": [
+      "The doctor's management plan listed diagnostic blood tests and scans under Ix.",
+      "Initial Ix showed normal electrolyte levels and clear imaging.",
+      "Further specialist Ix were deferred pending clinic review."
+    ]
+  },
+  {
+    "abbreviation": "LA",
+    "expansion": "local anaesthetic",
+    "category": "anaesthetics",
+    "example_contexts": [
+      "The minor skin excision was performed under LA with the patient fully awake.",
+      "Infiltration with 1% lidocaine LA provided adequate analgesia.",
+      "Dental procedures are commonly completed using dental LA."
+    ]
+  },
+  {
+    "abbreviation": "LDL",
+    "expansion": "low-density lipoprotein",
+    "category": "biochemistry",
+    "example_contexts": [
+      "The lipid profile included an LDL cholesterol result requiring statin therapy.",
+      "Cardiovascular guidelines emphasize lowering serum LDL levels.",
+      "Statin dosage was titrated to achieve the target LDL concentration."
+    ]
+  },
+  {
+    "abbreviation": "LFT",
+    "expansion": "liver function test",
+    "category": "biochemistry",
+    "example_contexts": [
+      "The clinician requested an LFT blood panel for liver enzyme assessment.",
+      "Routine monitoring of statin therapy included baseline LFT.",
+      "Elevated transaminases were noted on the latest LFT report."
+    ]
+  },
+  {
+    "abbreviation": "LMP",
+    "expansion": "last menstrual period",
+    "category": "clinical notation",
+    "example_contexts": [
+      "The gynaecology history recorded the precise date of the LMP.",
+      "Gestational age was calculated based on the onset of the LMP.",
+      "The patient reported her LMP occurred six weeks prior to presentation."
+    ]
+  },
+  {
+    "abbreviation": "M/R",
+    "expansion": "modified release",
+    "category": "pharmacy",
+    "example_contexts": [
+      "The medication formulation was marked M/R on its packaging.",
+      "Oral morphine was prescribed in an M/R capsule for once-daily dosing.",
+      "Pharmacist advice highlighted that M/R tablets must not be crushed."
+    ]
+  },
+  {
+    "abbreviation": "MRI",
+    "expansion": "magnetic resonance imaging",
+    "category": "imaging",
+    "example_contexts": [
+      "Radiology scheduled a cranial MRI using its high-field magnetic scanner.",
+      "Soft tissue detail of the knee ligament was clearly demonstrated on MRI.",
+      "Safety screening for metal implants was completed prior to entering MRI."
+    ]
+  },
+  {
+    "abbreviation": "MSU",
+    "expansion": "mid-stream urine sample",
+    "category": "laboratory",
+    "example_contexts": [
+      "The patient provided an MSU in a sterile pot during mid-flow urination.",
+      "The MSU showed bacterial growth consistent with Escherichia coli.",
+      "Guidance was provided on collecting a clean-catch MSU."
+    ]
+  },
+  {
+    "abbreviation": "NAD",
+    "expansion": "nothing abnormal discovered",
+    "category": "clinical notation",
+    "example_contexts": [
+      "The routine physical examination findings were summarised as NAD.",
+      "Cardiovascular and respiratory auscultation revealed NAD.",
+      "The clinical notes recorded NAD across all systemic checks."
+    ]
+  },
+  {
+    "abbreviation": "NAI",
+    "expansion": "non-accidental injury",
+    "category": "safeguarding",
+    "example_contexts": [
+      "The multi-agency safeguarding team assessed a suspected case of NAI.",
+      "Paediatric protocol required formal investigation for potential NAI.",
+      "Unexplained bruising in an infant prompted referral for NAI evaluation."
+    ]
+  },
+  {
+    "abbreviation": "NBM",
+    "expansion": "nil by mouth",
+    "category": "nursing notation",
+    "example_contexts": [
+      "The preoperative eating and drinking instruction was NBM from midnight.",
+      "A bedside sign indicated NBM pending anaesthetic review.",
+      "The patient was kept strictly NBM prior to endoscopic procedure."
+    ]
+  },
+  {
+    "abbreviation": "NG",
+    "expansion": "nasogastric",
+    "category": "clinical notation",
+    "example_contexts": [
+      "The team inserted an NG tube through the nose into the stomach for feeding.",
+      "Placement of the NG feeding tube was confirmed by pH aspirate check.",
+      "Enteral nutrition was administered via an NG route."
+    ]
+  },
+  {
+    "abbreviation": "NoF",
+    "expansion": "neck of femur",
+    "category": "orthopaedics",
+    "example_contexts": [
+      "The orthopaedic diagnosis was a displaced fracture of the NoF.",
+      "Surgical hemiarthroplasty was indicated for the fractured NoF.",
+      "An elderly patient was admitted following a fall resulting in a broken NoF."
+    ]
+  },
+  {
+    "abbreviation": "OT",
+    "expansion": "occupational therapist",
+    "category": "staff role",
+    "example_contexts": [
+      "An OT assessed the patient's ability to manage activities of daily living.",
+      "The hospital OT arranged home adaptations prior to discharge.",
+      "Functional assessment was conducted jointly by the PT and OT."
+    ]
+  },
+  {
+    "abbreviation": "POD",
+    "expansion": "podiatrist",
+    "category": "staff role",
+    "example_contexts": [
+      "The foot-care clinic arranged a specialised review with a POD.",
+      "Diabetic foot ulceration was managed by the specialist POD.",
+      "A referral was sent to the community POD for biomechanical gait analysis."
+    ]
+  },
+  {
+    "abbreviation": "POP",
+    "expansion": "plaster of paris",
+    "category": "orthopaedics",
+    "example_contexts": [
+      "The fracture clinic applied a lightweight POP cast to immobilise the limb.",
+      "Instructions for keeping the POP cast dry were provided.",
+      "The immobilisation was maintained with a below-knee POP."
+    ]
+  },
+  {
+    "abbreviation": "PT",
+    "expansion": "physiotherapist",
+    "category": "staff role",
+    "example_contexts": [
+      "A PT supervised rehabilitation exercises following knee replacement surgery.",
+      "Chest PT was performed by the respiratory therapist to clear secretions.",
+      "The ward PT assisted the patient with mobility assessment."
+    ]
+  },
+  {
+    "abbreviation": "PTT",
+    "expansion": "partial thromboplastin time",
+    "category": "haematology",
+    "example_contexts": [
+      "The coagulation laboratory report listed a prolonged PTT result.",
+      "Coagulation status was assessed by measuring prothrombin time and PTT.",
+      "Haemophilia workup included detailed evaluation of the PTT."
+    ]
+  },
+  {
+    "abbreviation": "PU",
+    "expansion": "passed urine",
+    "category": "nursing notation",
+    "example_contexts": [
+      "The nursing output chart recorded PU with satisfactory volume after catheter removal.",
+      "Post-operative discharge checklist required the patient to have PU.",
+      "Fluid balance chart noted PU twice during the shift."
+    ]
+  },
+  {
+    "abbreviation": "RNLD",
+    "expansion": "learning disability nurse",
+    "category": "staff role",
+    "example_contexts": [
+      "An RNLD supported the patient during attendance at the specialist clinic.",
+      "Liaison between primary care and the patient was facilitated by an RNLD.",
+      "The community learning disabilities team allocated an RNLD to the case."
+    ]
+  },
+  {
+    "abbreviation": "ROSC",
+    "expansion": "return of spontaneous circulation",
+    "category": "emergency",
+    "example_contexts": [
+      "The resuscitation team documented ROSC after successful defibrillation.",
+      "Post-cardiac arrest care was initiated immediately upon achieving ROSC.",
+      "Sustained ROSC was confirmed by palpable carotid pulse and capnography."
+    ]
+  },
+  {
+    "abbreviation": "S/R",
+    "expansion": "sustained release",
+    "category": "pharmacy",
+    "example_contexts": [
+      "The medication formulation was marked S/R on its packaging.",
+      "Prescription of S/R nifedipine provided smooth 24-hour blood pressure control.",
+      "Patients are advised not to chew or split S/R oral preparations."
+    ]
+  },
+  {
+    "abbreviation": "SpO2",
+    "expansion": "peripheral oxygen saturation",
+    "category": "vital signs",
+    "example_contexts": [
+      "The ward sister checked the patient's SpO2 reading on the pulse oximeter.",
+      "Supplemental oxygen was titrated to maintain SpO2 between 94% and 98%.",
+      "Room air SpO2 was measured at 96%."
+    ]
+  }
+]
